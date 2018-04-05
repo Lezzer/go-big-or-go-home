@@ -1,0 +1,21 @@
+#pipelines_selector {
+    min-height: 735px !important; 
+    min-width: 500px !important;
+    background-color: slategray;
+}
+
+#pipelines_selector_pipelines {
+    background-color: yellow;
+}
+
+.enhanced_dropdown {
+    min-width: 400px !important;
+    background-color: cornflowerblue;
+}
+
+.scrollable_panel {
+    position: relative;
+    min-width: 400px !important;
+    min-height: 600px  !important;
+    background-color: deeppink;
+}
