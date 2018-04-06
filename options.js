@@ -2,10 +2,12 @@ function save_options() {
     const backgroundColour = document.getElementById('background-colour').value;
     const pipelinesFilter = document.getElementById('pipelines-filter').value;
     
+    const pipelinesFilterArray = pipelinesFilter.split(";");
+        
     var config = {
         options: {
             backgroundColour: backgroundColour,
-            pipelinesFilter: pipelinesFilter
+            pipelinesFilter: pipelinesFilterArray
         }
     };
     
@@ -22,7 +24,12 @@ function save_options() {
 }
 
 function restore_options() {
-    chrome.storage.sync.get("options", function(settings) {
+    chrome.storage.sync.get({
+        options: {
+            backgroundColour: "white",
+            pipelinesFilter: ""
+        }
+    }, function(settings) {
         
         const backgroundColourInputBox = document.getElementById("background-colour");
         backgroundColourInputBox.value = settings.options.backgroundColour;
