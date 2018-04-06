@@ -1,5 +1,9 @@
 function save_options() {
-    const backgroundColour = document.getElementById('background-colour').value;
+    const backgroundColourInputBox = document.getElementById("background-colour");
+    const backgroundColour = backgroundColourInputBox.value;
+    backgroundColourInputBox.style.backgroundColor = backgroundColour;
+    backgroundColourInputBox.value = '';
+
     const pipelinesFilter = document.getElementById('pipelines-filter').value;
     
     const pipelinesFilterArray = pipelinesFilter.split(";");
@@ -18,8 +22,6 @@ function save_options() {
         setTimeout(function() {
             status.style.display = 'none';
         }, 1000);
-
-        chrome.runtime.reload();
     });
 }
 
