@@ -1,5 +1,6 @@
 {
   "manifest_version": 2,
+  
   "name": "GO BIG OR GO HOME",
   "version": "0.1.0",
   "description": "Simple web browser extension (Chrome only for now) that makes the drop-down pipelines window BIGGER (and useable) in GO Pipelines.",

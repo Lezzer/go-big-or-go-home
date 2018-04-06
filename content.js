@@ -4,18 +4,18 @@ function formatPipelinesDropDown() {
         pipelineSelector.style.backgroundColor = settings.options.backgroundColour;
 
         const pipelineGroups = pipelineSelector.getElementsByClassName("selector_group");
-        const pipelineFilterArray = settings.options.pipelinesFilter;
-
+        
+        const pipelinesFilter = settings.options.pipelinesFilter;
+        const pipelinesFilterArray = pipelinesFilter.split(";");
+        
         for(var i = 0; i < pipelineGroups.length; i++) {
             var pipelineGroup = pipelineGroups[i];
-            if (!isInPipelineFilterArray(pipelineGroup.id.toLowerCase(), pipelineFilterArray)){
+            if (!isInPipelineFilterArray(pipelineGroup.id.toLowerCase(), pipelinesFilterArray)){
                 pipelineGroup.style.display = 'none';
             }
         }
     });
-
 }
-
 
 function isInPipelineFilterArray(id, pipelineFilterArray) {
     for(var i = 0; i < pipelineFilterArray.length; i++) {
@@ -27,4 +27,5 @@ function isInPipelineFilterArray(id, pipelineFilterArray) {
     return false;
 }
 
+formatPipelinesDropDown();
 setInterval(formatPipelinesDropDown, 5000);
