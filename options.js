@@ -6,12 +6,10 @@ function save_options() {
 
     const pipelinesFilter = document.getElementById('pipelines-filter').value;
     
-    const pipelinesFilterArray = pipelinesFilter.split(";");
-        
     var config = {
         options: {
             backgroundColour: backgroundColour,
-            pipelinesFilter: pipelinesFilterArray
+            pipelinesFilter: pipelinesFilter
         }
     };
     
