@@ -1,11 +1,13 @@
-function syncOptionsToPage() {
+function syncOptionsToPage(filterPage) {
     chrome.storage.sync.get("options", function(settings) {
 
         var pipelinesFilter = settings.options.pipelinesFilter;
         var pipelinesFilterArray = pipelinesFilter.split(";");
         
         formatPipelinesDropDown(settings, pipelinesFilterArray);
-        hidePipelineGroupsOnPage(pipelinesFilterArray);
+        
+        if (filterPage)
+            hidePipelineGroupsOnPage(pipelinesFilterArray);
     });
 }
 
@@ -43,5 +45,5 @@ function isInPipelineFilterArray(id, pipelineFilterArray) {
     return false;
 }
 
-syncOptionsToPage();
+syncOptionsToPage(true);
 setInterval(syncOptionsToPage, 5000);
