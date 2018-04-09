@@ -2,14 +2,15 @@ function save_options() {
     const backgroundColourInputBox = document.getElementById("background-colour");
     const backgroundColour = backgroundColourInputBox.value;
     backgroundColourInputBox.style.backgroundColor = backgroundColour;
-    backgroundColourInputBox.value = '';
 
     const pipelinesFilter = document.getElementById('pipelines-filter').value;
+    const filterPage = document.getElementById('filter-page').value;
     
     var config = {
         options: {
             backgroundColour: backgroundColour,
-            pipelinesFilter: pipelinesFilter
+            pipelinesFilter: pipelinesFilter,
+            filterPage: filterPage
         }
     };
     
@@ -27,15 +28,16 @@ function restore_options() {
     chrome.storage.sync.get({
         options: {
             backgroundColour: "white",
-            pipelinesFilter: ""
+            pipelinesFilter: "",
+            filterPage: false
         }
     }, function(settings) {
-        
         const backgroundColourInputBox = document.getElementById("background-colour");
         backgroundColourInputBox.value = settings.options.backgroundColour;
         backgroundColourInputBox.style.backgroundColor = settings.options.backgroundColour;
         
         document.getElementById("pipelines-filter").value = settings.options.pipelinesFilter;
+        document.getElementById("filter-page").checked = settings.options.filterPage;
     });
 
     document.getElementById('save').addEventListener('click', save_options);
