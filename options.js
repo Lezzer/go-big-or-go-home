@@ -4,7 +4,7 @@ function save_options() {
     backgroundColourInputBox.style.backgroundColor = backgroundColour;
 
     const pipelinesFilter = document.getElementById('pipelines-filter').value;
-    const filterPage = document.getElementById('filter-page').value;
+    const filterPage = document.getElementById('filter-page').checked;
     
     var config = {
         options: {
@@ -37,9 +37,12 @@ function restore_options() {
         backgroundColourInputBox.style.backgroundColor = settings.options.backgroundColour;
         
         document.getElementById("pipelines-filter").value = settings.options.pipelinesFilter;
-        document.getElementById("filter-page").checked = settings.options.filterPage;
+
+        if (settings.options.filterPage === true)
+            document.getElementById("filter-page").checked = true;
     });
 
     document.getElementById('save').addEventListener('click', save_options);
 }
+
 document.addEventListener('DOMContentLoaded', restore_options);
